@@ -1,19 +1,72 @@
 * {
     background-color: whitesmoke;
-    color: 80273D
+    color: #80273D;
 }
 
 .container {
     display: flex;
     margin: 0;
-    padding: 0;
+    padding: 35px 10%;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
     width: 100vh;
+    background-color: #28816A;
+    text-align: center;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 10%;
+    border: 1px solid black;
+    background-color: #283E81;
+}
+
+h1 {
+    border-color: black;
+    margin: 35px 10%;
+}
+
+h2 {
+    display: inline-flex;
+    text-align: justify;
+    border: 1px solid black ;
+}
+
+.button {
+    border-radius: 10px;
+    color: #283E81;
+    font-weight: bold;
+    cursor: crosshair;
+    text-align: center;
+    justify-content: center;
+    display:flex;
+    border: 1px solid black;
+    background: powderblue;
+}
+
+button:hover {
+    border-color: #80273D;
+    background-color: #816A28;
+}
+
+section {
+    width: 100vw;
+    height: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+ div a {
+     text-align: left;
+ }
+
 /*Colors
+80273D red
 816A28 yellow
 28816A green
 283E81 blue
