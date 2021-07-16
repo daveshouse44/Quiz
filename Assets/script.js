@@ -7,7 +7,8 @@ var btnElC = document.querySelector("#option2");
 var btnElD = document.querySelector("#option3");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timeRemain");
-var scorePlayerEl = document.getElementById("scorePlayerList");
+var scorePlayerEl = document.getElementById("scoreCont");
+var buttonReset = document.querySelector(".buttonReset");
 
 var questionIndex;
 var highScores = [];
@@ -38,6 +39,10 @@ function showQuestions() {
         btnElD.textContent = wineQuestions[questionIndex].Choice4;
     }
 
+// Displays user data in High Scores
+    if (scorePlayerEl) {
+
+    }
 // Displays next question object
 }
 let nextQuestion = function (choice) {
@@ -62,12 +67,29 @@ let nextQuestion = function (choice) {
         // Saves High Scores
         localStorage.setItem("users", JSON.stringify(users));
 
-        function showHighScores(){
-            window.location.replace("highScores.html");
-        }
-        showHighScores ();
+    var previousScore = JSON.parse(localStorage.getItem("users")) || [];
 
-        return;
+    for (i = 0; i < previousScore.length; i++) {
+        console.log("eachPlayerScore", previousScore[i]);
+    var liEl = document.createElement("li");
+        liEl.textContent=previousScore[i].initials + " - " + previousScore[i].score;
+    var OlElement = document.getElementById("scoreCont");
+        OlElement.append(liEl);
+
+}
+function showHighScores(){
+    window.location.replace("highScores.html");
+}
+return;
+
+resetButton.addEventListener("click", resetScores);
+//reset
+function resetScores () {
+    localStorage.clear("previousScoreList");
+    location.reload();
+}
+
+
     }
     // Compares user choice with correct or incorrect options
     if (wineQuestions[questionIndex].correctAnswer == wineQuestions[questionIndex][choice]) {
@@ -99,7 +121,6 @@ function timer() {
         } else {
             timerEl.textContent = 0;
             clearInterval(timer);
-            showHighScores();
         }
     }, 1000);
 }
