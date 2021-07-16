@@ -7,6 +7,7 @@ var btnElC = document.querySelector("#option2");
 var btnElD = document.querySelector("#option3");
 var resultEl = document.querySelector("#result");
 var timerEl = document.querySelector("#timeRemain");
+var scorePlayerEl = document.getElementById("scorePlayerList");
 
 var questionIndex;
 var highScores = [];
@@ -15,7 +16,8 @@ var highScores = [];
 var timer;
 var timeRemain;
 
-
+// Event Listener to start Quiz
+startButtonEl.addEventListener("click", buildQuiz);
 
 function buildQuiz() {
     timer();
@@ -35,8 +37,10 @@ function showQuestions() {
         btnElC.textContent = wineQuestions[questionIndex].Choice3;
         btnElD.textContent = wineQuestions[questionIndex].Choice4;
     }
+
+// Displays next question object
 }
-let nextQuestion = function(choice) {
+let nextQuestion = function (choice) {
     if (questionIndex == wineQuestions.length - 1) {
         let initials = prompt("Enter your Initials!");
 
@@ -50,7 +54,12 @@ let nextQuestion = function(choice) {
 
         if (users) {
             users.push(item);
+        } else {
+            users = [];
+            users.push(item);
         }
+
+        // Saves High Scores
         localStorage.setItem("users", JSON.stringify(users));
 
         function showHighScores(){
@@ -60,6 +69,7 @@ let nextQuestion = function(choice) {
 
         return;
     }
+    // Compares user choice with correct or incorrect options
     if (wineQuestions[questionIndex].correctAnswer == wineQuestions[questionIndex][choice]) {
         document.getElementById("result").style.color = "green";
         resultEl.textContent = "Correct!";    
@@ -94,7 +104,6 @@ function timer() {
     }, 1000);
 }
 // Added Event Listeners
-startButtonEl.addEventListener("click", buildQuiz);
 btnElA.addEventListener("click", nextQuestion);
 btnElB.addEventListener("click", nextQuestion);
 btnElC.addEventListener("click", nextQuestion);
